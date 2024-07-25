@@ -151,3 +151,19 @@ li.done {
 li.in-progress {
   background-color: red;
 }
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.search {
+  box-sizing: border-box;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 160px;
+  height: 40px;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  outline: var(--color-4e75ff);
+}
