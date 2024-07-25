@@ -1,2 +1,6 @@
-(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const o of t.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&s(o)}).observe(document,{childList:!0,subtree:!0});function i(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(e){if(e.ep)return;e.ep=!0;const t=i(e);fetch(e.href,t)}})();
+import"./assets/modulepreload-polyfill-3cfb730f.js";/* empty css                      */const r=document.querySelector(".btn"),o=document.querySelector(".user-list");r.addEventListener("click",()=>{c().then(e=>s(e)).catch(e=>console.log(e))});function c(){return fetch("https://jsonplaceholder.typicode.com/users").then(e=>{if(!e.ok)throw new Error(e.status);return e.json()})}function s(e){const n=e.map(t=>`<li class="user-item">
+	          <p><b>Name</b>: ${t.name}</p>
+	          <p><b>Email</b>: ${t.email}</p>
+	          <p><b>Company</b>: ${t.company.name}</p>
+	        </li>`).join("");o.insertAdjacentHTML("beforeend",n)}
 //# sourceMappingURL=commonHelpers.js.map

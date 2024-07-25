@@ -1,0 +1,2 @@
+import"./assets/modulepreload-polyfill-3cfb730f.js";/* empty css                      */const e=document.querySelector(".todo-list"),r=({completed:t,title:o})=>`<li class="${t?"done":"in-progress"}">${o}</li>`,n=t=>t.map(r).join("");fetch("https://jsonplaceholder.typicode.com/todos").then(t=>{if(!t.ok)throw new Error(t.status);return t.json()}).then(t=>{const o=n(t);e.insertAdjacentHTML("beforeend",o)}).catch(t=>console.error(t));
+//# sourceMappingURL=commonHelpers6.js.map
