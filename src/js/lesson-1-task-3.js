@@ -2,10 +2,34 @@
 
 // https://pokeapi.co/api/v2/pokemon/ditto
 
-function fetchPokemon(pokemonID) {}
+function fetchPokemon(pokemonID) {
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonID}`).then(
+    res => {
+      if (!res.ok) {
+        throw new Error(res.status);
+      }
+      return res.json();
+    }
+  );
+}
 
 const cardContainer = document.querySelector('.card-container');
 const searchForm = document.querySelector('.search-form');
+
+searchForm.addEventListener('submit', handleSearch);
+
+function handleSearch(event) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+
+  const queryValue = form.elements.query.value.toLowerCase();
+
+  fetchPokemon(queryValue)
+    .then(renderPokemonCard)
+    .catch(onFetchError)
+    .finally(() => form.reset());
+}
 
 function renderPokemonCard({
   name,
@@ -16,7 +40,8 @@ function renderPokemonCard({
 }) {
   const abilityListItems = abilities
     .map(
-      ability => `<li class="list-group-item">${ability.name}</li>`
+      ({ ability }) =>
+        `<li class="list-group-item">${ability.name}</li>`
     )
     .join('');
 
@@ -37,4 +62,8 @@ function renderPokemonCard({
       </div>`;
 
   cardContainer.innerHTML = markup;
+}
+
+function onFetchError(error) {
+  alert('Упс, щось пішло не так і ми не знайшли вашого покемона!');
 }

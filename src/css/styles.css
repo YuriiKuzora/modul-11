@@ -102,7 +102,9 @@ section {
   width: 100%;
 }
 
-.html-list {
+.html-list,
+.form-inline,
+.section {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -152,18 +154,51 @@ li.in-progress {
   background-color: red;
 }
 
-.form {
+.container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 20px;
 }
-.search {
+
+.form-control {
   box-sizing: border-box;
   border: 1px solid #808080;
-  border-radius: 4px;
+  border-radius: 8px;
   width: 160px;
   height: 40px;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
   padding: 8px 16px;
   outline: var(--color-4e75ff);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 16px;
+  background-color: var(--color-cfcfcf);
+  border-radius: 8px;
+  max-width: 300px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-title,
+.card-text,
+.list-group-item {
+  background-color: var(--color-fafafa);
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
